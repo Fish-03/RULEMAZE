@@ -735,11 +735,17 @@ def dealwith_trajectory_v2(trajectory, saved_dir, save_file_name, debug=False):
                 if "pre_action_state =" in line:
                     try:
                         pre_state = eval(line.split("pre_action_state = ")[1].strip())
-                        if pre_state[-1][1] not in ("normal", "maze_bg"):
+                        # The first move leaves the start cell (green/prince), which
+                        # should not trigger rule verification just because start is
+                        # a special-looking cell.
+                        if step_id != 1 and pre_state[-1][1] not in ("normal", "maze_bg"):
                             add_verify = True
                     except Exception:
                         pass
-            if force_verify_rule or new_state not in ("normal", "maze_bg") or add_verify:
+            enters_rule_state = str(new_state).lower() not in (
+                "normal", "maze_bg", "red", "princess", "treasure"
+            )
+            if force_verify_rule or enters_rule_state or add_verify:
                 new_code += "\nVerifyRule()"
         elif "verify_reach_endpoint" in output_code:
             new_code = "VerifyEnd()"
