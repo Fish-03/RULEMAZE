@@ -400,7 +400,7 @@ If you find RuleMaze useful for your research, please cite our work:
 ```bibtex
 @misc{rulemaze,
   title  = {Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models},
-  author = {RuleMaze Authors},
+  author = {Chen, Yu and Lei, Ting and Li, Yaoyi and Cai, Jia and Wu, Zhecen and Liu, Yang},
   year   = {2026},
   note   = {Code and dataset release}
 }
