@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models</title>
+    <meta
+      name="description"
+      content="RuleMaze project page for rule-compliant visual spatial planning in multimodal large language models."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#">RuleMaze</a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#abstract">Abstract</a>
+          <a href="#dataset">Dataset</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="venue">ACM Multimedia</p>
+        <h1>Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models</h1>
+        <p class="subtitle">
+          RuleMaze studies whether multimodal large language models can perceive
+          visual mazes, interpret natural-language constraints, and produce
+          valid multi-step plans that obey explicit rules.
+        </p>
+
+        <div class="authors" aria-label="Authors">
+          <a href="mailto:yu_chen@stu.pku.edu.cn">Yu Chen<sup>1</sup></a>
+          <a href="mailto:ting_lei@pku.edu.cn">Ting Lei<sup>1</sup></a>
+          <a href="mailto:liyaoyi@yinwang.com">Yaoyi Li<sup>2</sup></a>
+          <a href="mailto:caijia@yinwang.com">Jia Cai<sup>2</sup></a>
+          <a href="mailto:wuzhecen@yinwang.com">Zhecen Wu<sup>2</sup></a>
+          <a href="mailto:yangliu@pku.edu.cn">Yang Liu<sup>1</sup></a>
+        </div>
+
+        <p class="affiliations">
+          <sup>1</sup> Peking University · <sup>2</sup> Shenzhen Yinwang
+          Intelligent Technology Co., Ltd
+        </p>
+
+        <div class="link-row" aria-label="Project links">
+          <a class="pill" href="#" aria-label="Paper PDF">Paper</a>
+          <a class="pill" href="#" aria-label="Code repository">Code</a>
+          <a class="pill" href="#" aria-label="Dataset">Dataset</a>
+          <a class="pill" href="#" aria-label="Models">Models</a>
+          <a class="pill" href="#" aria-label="Poster">Poster</a>
+        </div>
+
+        <figure class="hero-figure overview-carousel" data-carousel>
+          <div class="overview-stage">
+            <button type="button" class="overview-button previous" data-prev aria-label="Previous overview">
+              &#10094;
+            </button>
+            <div class="overview-slides">
+              <img
+                class="overview-slide slide is-active"
+                src="figures/teaser_rulemaze.png"
+                alt="RuleMaze dataset construction overview"
+              />
+              <img
+                class="overview-slide slide"
+                src="figures/teasure_0402.png"
+                alt="Disentangled Multimodal Planning framework overview"
+              />
+            </div>
+            <button type="button" class="overview-button next" data-next aria-label="Next overview">
+              &#10095;
+            </button>
+          </div>
+          <figcaption class="overview-caption">
+            <span>Overview of the RuleMaze dataset and the Disentangled Multimodal Planning (DMP) framework.</span>
+            <span data-counter>1 / 2</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="abstract" class="content-section">
+        <h2>Abstract</h2>
+        <p>
+          Multimodal large language models (MLLMs) combine linguistic reasoning
+          with visual perception, yet their ability to perform visual spatial
+          planning under explicit or previously unseen rule constraints remains
+          underexplored. This setting requires models to jointly understand
+          spatial layouts, interpret natural-language rules, and plan valid
+          actions accordingly.
+        </p>
+        <p>
+          We introduce <strong>RuleMaze</strong>, a controllable benchmark in
+          which MLLMs must navigate mazes while obeying natural-language rules of
+          varying complexity. RuleMaze isolates rule-compliant spatial planning
+          by requiring accurate perception, rule interpretation, and constrained
+          action planning. To enable scalable rule construction, we propose
+          <strong>Language-Logic-Function Hybridization</strong>, which
+          automatically generates natural-language rules, translates them into
+          logical representations, and compiles them into executable validators.
+        </p>
+        <p>
+          We further introduce <strong>Disentangled Multimodal Planning</strong>
+          (DMP), which separates perception, execution, and rule verification
+          through interpretable reasoning primitives. Experiments show that DMP
+          substantially improves rule compliance and planning success compared to
+          end-to-end textual planning baselines, especially under complex and
+          previously unseen rules.
+        </p>
+      </section>
+
+      <section id="highlights" class="content-section">
+        <h2>Highlights</h2>
+        <div class="contribution-grid">
+          <article>
+            <h3>RuleMaze Benchmark</h3>
+            <p>
+              A controllable visual planning benchmark with diverse maze
+              environments, natural-language rules, and executable trajectory
+              validation.
+            </p>
+          </article>
+          <article>
+            <h3>Language-Logic-Function</h3>
+            <p>
+              A scalable rule construction pipeline that moves from rule
+              ideation to logical formalization and synthesized validators.
+            </p>
+          </article>
+          <article>
+            <h3>DMP Framework</h3>
+            <p>
+              A tool-based planning framework that modularizes perception,
+              action execution, and rule verification for interpretable
+              reasoning.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="dataset" class="content-section">
+        <h2>RuleMaze Dataset</h2>
+        <figure class="wide-figure">
+          <img
+            class="paper-image"
+            src="figures/rulemaze.png"
+            alt="RuleMaze construction pipeline"
+          />
+          <figcaption>
+            RuleMaze construction pipeline: rule ideation, logical
+            formalization, validator synthesis, maze generation, and
+            constraint-based rule-maze matching.
+          </figcaption>
+        </figure>
+
+        <div class="split-section">
+          <article>
+            <h3>RegularMaze</h3>
+            <p>
+              The start and goal locations are indicated by green and red cells.
+              Rules refer to colored zones such as orange or pink, while other
+              cells remain visually uniform. This setting emphasizes spatial
+              reasoning under static goals and local rule constraints.
+            </p>
+          </article>
+          <article>
+            <h3>QuestMaze</h3>
+            <p>
+              The start is represented by a prince icon and the goal by a
+              princess or treasure icon. Rules involve symbolic objects such as
+              keys and may depend on history, collected items, or changing goal
+              conditions.
+            </p>
+          </article>
+        </div>
+
+        <figure class="wide-figure compact">
+          <img
+            class="paper-image"
+            src="figures/maze_data_vis_v3.png"
+            alt="RegularMaze and QuestMaze dataset examples"
+          />
+          <figcaption>
+            Dataset illustration under both RegularMaze and QuestMaze scenarios.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="method" class="content-section">
+        <h2>Disentangled Multimodal Planning</h2>
+        <p>
+          DMP treats rule-compliant spatial planning as an iterative
+          tool-invocation process. Instead of asking a model to solve perception,
+          execution, and rule checking in a single entangled forward pass, DMP
+          trains a controller to decide when and how to invoke reusable tools.
+        </p>
+
+        <figure class="wide-figure">
+          <img
+            class="paper-image"
+            src="figures/dmp_method.png"
+            alt="Disentangled Multimodal Planning method"
+          />
+          <figcaption>
+            Overall framework of Disentangled Multimodal Planning.
+          </figcaption>
+        </figure>
+
+        <div class="tool-table">
+          <article>
+            <h3>Perception</h3>
+            <p>
+              <code>LocateStart</code> identifies the initial position, while
+              <code>InspectGrid</code> extracts symbols from specific cells.
+            </p>
+          </article>
+          <article>
+            <h3>Execution</h3>
+            <p>
+              <code>ExecuteMove</code> applies an action and returns an updated
+              visual state with the agent position marked.
+            </p>
+          </article>
+          <article>
+            <h3>Verification</h3>
+            <p>
+              <code>VerifyRule</code> checks trajectory compliance and
+              <code>VerifyEndpoint</code> checks whether the target is reached.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="results" class="content-section">
+        <h2>Results</h2>
+        <p>
+          DMP improves both in-distribution performance and zero-shot
+          generalization to unseen rules. The gains are especially pronounced on
+          harder rule categories and on QuestMaze, where symbolic objects and
+          history-dependent constraints make planning more complex.
+        </p>
+
+        <div class="metrics-grid">
+          <article>
+            <span class="metric">90.0%</span>
+            <span class="metric-label">RegularMaze unseen-rule EM</span>
+          </article>
+          <article>
+            <span class="metric">92.7%</span>
+            <span class="metric-label">RegularMaze unseen-rule PR</span>
+          </article>
+          <article>
+            <span class="metric">88.0%</span>
+            <span class="metric-label">QuestMaze unseen-rule EM</span>
+          </article>
+          <article>
+            <span class="metric">91.7%</span>
+            <span class="metric-label">QuestMaze unseen-rule PR</span>
+          </article>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Model</th>
+                <th>Seen EM</th>
+                <th>Seen PR</th>
+                <th>Unseen EM</th>
+                <th>Unseen PR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>RegularMaze</td>
+                <td>Qwen2.5-VL SFT</td>
+                <td>94.0</td>
+                <td>95.3</td>
+                <td>70.3</td>
+                <td>73.9</td>
+              </tr>
+              <tr>
+                <td>RegularMaze</td>
+                <td>DMP-3B (Ours)</td>
+                <td>98.0</td>
+                <td>98.4</td>
+                <td>90.0</td>
+                <td>92.7</td>
+              </tr>
+              <tr>
+                <td>QuestMaze</td>
+                <td>Qwen2.5-VL SFT</td>
+                <td>66.8</td>
+                <td>73.6</td>
+                <td>56.3</td>
+                <td>68.0</td>
+              </tr>
+              <tr>
+                <td>QuestMaze</td>
+                <td>DMP-3B (Ours)</td>
+                <td>91.4</td>
+                <td>94.3</td>
+                <td>88.0</td>
+                <td>91.7</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <section id="qualitative" class="content-section">
+        <h2>Qualitative Analysis</h2>
+        <figure class="wide-figure compact">
+          <img
+            class="paper-image"
+            src="figures/result_example.png"
+            alt="RegularMaze qualitative planning example"
+          />
+          <figcaption>
+            Visualization of a RegularMaze test example comparing visual
+            planning variants.
+          </figcaption>
+        </figure>
+        <div class="comparison">
+          <h3>Representative Failure and Success Modes</h3>
+          <div class="comparison-grid">
+            <article>
+              <h4>SFT Baseline</h4>
+              <p>
+                Produces plausible navigation actions, but may violate the rule
+                after entering a constrained zone because rule checking is not
+                explicit.
+              </p>
+            </article>
+            <article>
+              <h4>Gemini 2.5 Pro</h4>
+              <p>
+                Can identify spatial constraints in text, yet may waive a rule
+                heuristically when a local move appears blocked.
+              </p>
+            </article>
+            <article>
+              <h4>DMP</h4>
+              <p>
+                Alternates between execution and rule verification, receiving
+                immediate feedback and revising candidate plans when needed.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="citation" class="content-section">
+        <h2>Citation</h2>
+        <pre><code>@inproceedings{chen2026rulemaze,
+  title     = {Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models},
+  author    = {Chen, Yu and Lei, Ting and Li, Yaoyi and Cai, Jia and Wu, Zhecen and Liu, Yang},
+  booktitle = {Proceedings of the ACM International Conference on Multimedia},
+  year      = {2026}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>RuleMaze</span>
+      <span>Rule-Compliant Visual Spatial Planning for MLLMs</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
