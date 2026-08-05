@@ -49,12 +49,37 @@
         </p>
 
         <div class="link-row" aria-label="Project links">
-          <a class="pill" href="#" aria-label="Paper PDF">Paper</a>
-          <a class="pill" href="#" aria-label="Code repository">Code</a>
-          <a class="pill" href="#" aria-label="Dataset">Dataset</a>
-          <a class="pill" href="#" aria-label="Models">Models</a>
-          <a class="pill" href="#" aria-label="Poster">Poster</a>
+          <a
+            class="pill"
+            href="paper.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Paper PDF"
+          >Paper</a>
+          <a
+            class="pill"
+            href="https://github.com/Fish-03/RULEMAZE"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Code repository"
+          >Code</a>
+          <a
+            class="pill"
+            href="https://huggingface.co/datasets/Fish-03/RuleMaze"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Dataset"
+          >Dataset</a>
+          <span class="pill unavailable" role="link" aria-disabled="true" aria-label="Models unavailable">Models</span>
+          <span class="pill unavailable" role="link" aria-disabled="true" aria-label="Poster unavailable">Poster</span>
         </div>
+
+        <section class="intro-video" aria-label="Introduction video">
+          <video class="intro-video-player" controls preload="auto" playsinline data-intro-video>
+            <source src="video/RuleMaze-MM26-pre-seekable.mp4" type="video/mp4" />
+            Introduction video.
+          </video>
+        </section>
 
         <figure class="hero-figure overview-carousel" data-carousel>
           <div class="overview-stage">
