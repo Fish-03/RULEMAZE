@@ -1,8 +1,8 @@
 # Rule-Compliant Visual Spatial Planning for Multimodal Large Language Models
 
-[![Dataset](https://img.shields.io/badge/Dataset-Coming%20Soon-blue)](#data-download)
-[![Paper](https://img.shields.io/badge/Paper-Coming%20Soon-green)](#citation)
-[![Demo Page](https://img.shields.io/badge/Demo%20Page-Coming%20Soon-purple)](#news-and-todos)
+[![Dataset](https://img.shields.io/badge/Dataset-Hugging%20Face-blue)](https://huggingface.co/datasets/Fish-03/RuleMaze)
+[![Paper](https://img.shields.io/badge/Paper-Project%20Page-green)](https://fish-03.github.io/RULEMAZE/paper)
+[![Demo Page](https://img.shields.io/badge/Demo%20Page-Online-purple)](https://fish-03.github.io/RULEMAZE/)
 
 Official implementation for **RuleMaze**, a controllable benchmark and training pipeline for studying rule-compliant visual spatial planning in multimodal large language models (MLLMs).
 
