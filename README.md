@@ -212,7 +212,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 llamafactory-cli train \
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_maze_checkpoints.py \
   --predict-yaml examples/inference/qwen25vl_3b_maze_lora_predict_both.yaml \
   --checkpoint-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_sft_both_50 \
-  --output-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_checkpoint_eval_both
+  --output-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_checkpoint_eval_both \
+  --max-reset-rounds 3
 ```
 
 Training takes approximately 12 hours on 4 RTX 4090 GPUs.
@@ -342,7 +343,8 @@ Evaluate all checkpoints:
 CUDA_VISIBLE_DEVICES=0 python scripts/eval_maze_checkpoints.py \
   --predict-yaml examples/inference/qwen25vl_3b_maze_lora_predict_both.yaml \
   --checkpoint-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_sft_both_50 \
-  --output-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_checkpoint_eval_both
+  --output-root ../DATA/Training_Result/qwen2.5-vl-3b/lora/maze_checkpoint_eval_both \
+  --max-reset-rounds 3
 ```
 
 Each checkpoint evaluation directory contains:
