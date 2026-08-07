@@ -393,7 +393,7 @@ Evaluation metrics include exact step match, maze-level exact match, prefix prog
 
 ## Acknowledgements
 
-
+This work was supported by the grants from the National Natural Science Foundation of China 62372014 and Beijing Nova Program.
 
 ## Citation
 
